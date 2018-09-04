@@ -9,6 +9,17 @@
 import Foundation
 
 struct Podcast {
-    let name: String
-    let artistName: String
+    var name: String?
+    var artistName: String?
+    var artworkUrl600: String?
+    var trackCount: Int?
+    var feedUrl: String?
+    
+    init(_ json: [String: Any]) {
+        self.name = json["trackName"] as? String ?? ""
+        self.artistName = json["artistName"] as? String ?? ""
+        self.artworkUrl600 = json["artworkUrl600"] as? String ?? ""
+        self.trackCount = json["trackCount"] as? Int ?? -1
+        self.feedUrl = json["feedUrl"] as? String ?? ""
+    }
 }
